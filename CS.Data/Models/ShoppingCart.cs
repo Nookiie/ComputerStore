@@ -12,7 +12,7 @@ namespace ComputerStore.Data.Models
     {
         public ShoppingCart()
         {
-
+            
         }
 
         public ShoppingCart(ICollection<ItemOrder> Orders)
@@ -20,7 +20,7 @@ namespace ComputerStore.Data.Models
             this.Orders = Orders;
         }
 
-        public ICollection<ItemOrder> Orders { get; set; }
+        public ICollection<ItemOrder> Orders { get; set; } = new List<ItemOrder>();
 
         public decimal TotalPrice { get; set; } = 0;
 

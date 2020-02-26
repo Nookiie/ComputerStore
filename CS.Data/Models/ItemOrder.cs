@@ -7,12 +7,14 @@ namespace ComputerStore.Data.Models
 {
     public class ItemOrder : BaseModel<int>
     {
-        public ItemOrder(ProductItem item, int PurchaseQuantity)
+        public ItemOrder(ProductItem item, int purchaseQuantity)
         {
-            TotalPrice = ProductItem.Price * PurchaseQuantity;
+            this.ProductItem = item;
+            this.PurchaseQuantity = purchaseQuantity;
+            TotalPrice = item.Price * PurchaseQuantity;
         }
 
-        public ProductItem ProductItem { get; set; }
+        public ProductItem ProductItem { get; set; } 
 
         public decimal TotalPrice { get; set; }
 

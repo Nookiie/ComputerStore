@@ -6,3 +6,5 @@ C:\Users\Nookie\source\repos\CS.Data\CS.Data\bin\Debug\netcoreapp3.1\ComputerSto
 C:\Users\Nookie\source\repos\CS.Data\CS.Data\obj\Debug\netcoreapp3.1\ComputerStore.Data.csprojAssemblyReference.cache
 C:\Users\Nookie\source\repos\CS.Data\CS.Data\obj\Debug\netcoreapp3.1\ComputerStore.Data.dll
 C:\Users\Nookie\source\repos\CS.Data\CS.Data\obj\Debug\netcoreapp3.1\ComputerStore.Data.pdb
+C:\Users\Nookie\source\repos\CS.Data\CS.Data\bin\Debug\netcoreapp3.1\ComputerStore.Data.runtimeconfig.json
+C:\Users\Nookie\source\repos\CS.Data\CS.Data\bin\Debug\netcoreapp3.1\ComputerStore.Data.runtimeconfig.dev.json
