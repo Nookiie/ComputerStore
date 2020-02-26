@@ -11,9 +11,9 @@ namespace ComputerStore.Test
         public void ApplyDiscountWhenCartHasNoItemsTest()
         {
             ShoppingCart cart = new ShoppingCart();
-            DiscountCalculator.ApplyDiscount(cart);
+            ShoppingCartUtils.ApplyDiscount(cart);
 
-            Assert.True(DiscountCalculator.DebugMessages.Contains("No discount applied, order count is empty"));
+            Assert.True(ShoppingCartUtils.DebugMessages.Contains("No discount applied, order count is empty"));
         }
 
         [Fact]
@@ -36,9 +36,9 @@ namespace ComputerStore.Test
             };
 
             ShoppingCart cart = new ShoppingCart(itemOrders);
-            DiscountCalculator.ApplyDiscount(cart);
+            ShoppingCartUtils.ApplyDiscount(cart);
 
-            Assert.True(DiscountCalculator.DebugMessages.Contains("No discount applied, order count has only one item"));
+            Assert.True(ShoppingCartUtils.DebugMessages.Contains("No discount applied, order count has only one item"));
         }
 
         [Fact]
@@ -69,9 +69,9 @@ namespace ComputerStore.Test
             };
 
             ShoppingCart cart = new ShoppingCart(itemOrders);
-            DiscountCalculator.ApplyDiscount(cart);
+            ShoppingCartUtils.ApplyDiscount(cart);
 
-            Assert.True(DiscountCalculator.DebugMessages.Contains("Discount applied on"));
+            Assert.True(ShoppingCartUtils.DebugMessages.Contains("Discount applied on"));
         }
 
         [Fact]
@@ -108,9 +108,9 @@ namespace ComputerStore.Test
             };
 
             ShoppingCart cart = new ShoppingCart(itemOrders);
-            DiscountCalculator.ApplyDiscount(cart);
+            ShoppingCartUtils.ApplyDiscount(cart);
 
-            Assert.True(DiscountCalculator.DebugMessages.Contains("Error, cart is not valid"));
+            Assert.True(ShoppingCartUtils.DebugMessages.Contains("Error, cart is not valid"));
         }
     }
 }

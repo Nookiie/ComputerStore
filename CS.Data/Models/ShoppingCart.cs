@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using ComputerStore.Data.Models.Abstract;
 
@@ -17,19 +18,6 @@ namespace ComputerStore.Data.Models
         public ShoppingCart(ICollection<ItemOrder> Orders)
         {
             this.Orders = Orders;
-
-            foreach (var item in Orders)
-            {
-                if (item.PurchaseQuantity > item.ProductItem.StockQuantity)
-                {
-                    IsValid = false;
-                    // Debug.Error("Error, PurchaseQuantity is larger than StockQuantity of Item: {0}", item.ProductItem.Name);
-                    return;
-                }
-
-                TotalPrice += item.TotalPrice;
-                // DiscountCalculator
-            }
         }
 
         public ICollection<ItemOrder> Orders { get; set; }

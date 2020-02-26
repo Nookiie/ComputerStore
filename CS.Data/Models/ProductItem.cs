@@ -15,6 +15,7 @@ namespace ComputerStore.Data.Models
             this.Price = price;
             this.Categories = categories;
         }
+
         public string Name { get; set; }
 
         public string Description { get; set; }
