@@ -71,7 +71,7 @@ namespace ComputerStore.Test
             ShoppingCart cart = new ShoppingCart(itemOrders);
             ShoppingCartUtils.SetTotalPriceWithDiscount(cart);
 
-            Assert.Equal((decimal) 175.13, cart.TotalPrice);
+            Assert.Equal((decimal) 304.53, cart.TotalPrice);
         }
 
         [Fact]
@@ -96,7 +96,7 @@ namespace ComputerStore.Test
 
             List<ItemOrder> itemOrders = new List<ItemOrder>()
             {
-                new ItemOrder(products[0], 2),
+                new ItemOrder(products[0], 1),
                 new ItemOrder(products[1], 1),
             };
 

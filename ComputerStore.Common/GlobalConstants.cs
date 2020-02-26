@@ -15,6 +15,6 @@ namespace ComputerStore.Common
 
 
         // Discounts
-        public static readonly decimal DEFAULT_DISCOUNT = 5 / 100;
+        public static readonly decimal DEFAULT_DISCOUNT = (decimal) 0.05;
     }
 }

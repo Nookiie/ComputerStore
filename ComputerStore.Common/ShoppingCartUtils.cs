@@ -34,7 +34,6 @@ namespace ComputerStore.Common
                 DebugMessages.Add("No discount applied, order count is empty");
                 return;
             }
-
           
             else if (cart.Orders.Count == 1)
             {
@@ -47,7 +46,7 @@ namespace ComputerStore.Common
             {
                 if (order.PurchaseQuantity > 1)
                 {
-                    order.TotalPrice = GetDiscount(order);
+                    SetDiscount(order);
 
                     DebugMessages.Add("Discount applied on: " + order.ID + ", due to quantity > 1");
                 }
@@ -56,7 +55,7 @@ namespace ComputerStore.Common
                     allCategories.Concat(order.ProductItem.Categories);
                 }
 
-                var dupeCategories = allCategories.GroupBy(x => x)
+                var dupeCategories = allCategories.GroupBy(x => x.Name)
                                           .Where(x => x.Count() > 1)
                                           .Select(x => x.Key)
                                           .ToList();
@@ -65,13 +64,15 @@ namespace ComputerStore.Common
                 {
                     foreach(var category in dupeCategories)
                     {
-                        if (order.ProductItem.Categories.Where(x => x.Name == category.Name).Any())
+                        if (order.ProductItem.Categories.Where(x => x.Name == category).Any())
                         {
-                            order.TotalPrice = GetDiscount(order);
+                            SetDiscount(order);
                         }
                     }
                 }
             }
+
+            SetCartTotalPrice(cart);
         }
 
         public static bool IsCartValid(ShoppingCart cart)
@@ -93,14 +94,13 @@ namespace ComputerStore.Common
         {
             foreach (var order in cart.Orders)
             {
-                order.TotalPrice = order.ProductItem.Price * order.PurchaseQuantity;
                 cart.TotalPrice += order.TotalPrice;
             }
         }
 
-        public static decimal GetDiscount(ItemOrder order)
+        public static void SetDiscount(ItemOrder order)
         {
-            return (order.ProductItem.Price - (GlobalConstants.DEFAULT_DISCOUNT * order.ProductItem.Price))
+            order.TotalPrice = (order.ProductItem.Price - (GlobalConstants.DEFAULT_DISCOUNT * order.ProductItem.Price))
                         + (order.ProductItem.Price * (order.PurchaseQuantity - 1));
         }
     }
