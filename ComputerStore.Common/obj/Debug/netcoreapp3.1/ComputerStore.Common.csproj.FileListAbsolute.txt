@@ -1,0 +1,11 @@
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Common\obj\Debug\netcoreapp3.1\ComputerStore.Common.csprojAssemblyReference.cache
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Common\obj\Debug\netcoreapp3.1\ComputerStore.Common.AssemblyInfoInputs.cache
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Common\obj\Debug\netcoreapp3.1\ComputerStore.Common.AssemblyInfo.cs
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Common\bin\Debug\netcoreapp3.1\ComputerStore.Common.deps.json
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Common\bin\Debug\netcoreapp3.1\ComputerStore.Common.dll
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Common\bin\Debug\netcoreapp3.1\ComputerStore.Common.pdb
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Common\bin\Debug\netcoreapp3.1\ComputerStore.Data.dll
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Common\bin\Debug\netcoreapp3.1\ComputerStore.Data.pdb
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Common\obj\Debug\netcoreapp3.1\ComputerStore.Common.csproj.CopyComplete
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Common\obj\Debug\netcoreapp3.1\ComputerStore.Common.dll
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Common\obj\Debug\netcoreapp3.1\ComputerStore.Common.pdb
