@@ -33,9 +33,9 @@ namespace ComputerStore.Repositories.Implementations
 
         public void Dispose() => this.Context.Dispose();
 
-        public void Add(TEntity entity)
+        public async Task AddAsync(TEntity entity)
         {
-            this.DbSet.Add(entity);
+            await this.DbSet.AddAsync(entity);
         }
 
         public void Delete(TEntity entity)

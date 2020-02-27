@@ -65,6 +65,16 @@ namespace ComputerStore.Data.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Category>(builder =>
+            {
+                builder.HasIndex(x => x.Name).IsUnique(true);
+            });
+
+            modelBuilder.Entity<ProductItem>(builder =>
+            {
+                builder.HasIndex(x => x.Name).IsUnique(true);
+            });
+
             base.OnModelCreating(modelBuilder);
         }
     }
