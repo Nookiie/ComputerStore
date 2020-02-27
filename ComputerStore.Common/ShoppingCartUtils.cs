@@ -16,7 +16,7 @@ namespace ComputerStore.Common
 
     public static class ShoppingCartUtils
     {
-        // Used primarily for Unit Tests
+        // Used primarily for Unit Tests and Debugging
         public static IList<string> DebugMessages { get; set; } = new List<string>();
 
         public static void SetTotalPriceWithDiscount(ShoppingCart cart)
@@ -32,13 +32,11 @@ namespace ComputerStore.Common
             if (cart.Orders.Count <= 0)
             {
                 DebugMessages.Add("No discount applied, order count is empty");
-                return;
             }
           
             else if (cart.Orders.Count == 1)
             {
                 DebugMessages.Add("No discount applied, order count is only 1");
-                return;
             }
 
             var allCategories = new List<Category>();

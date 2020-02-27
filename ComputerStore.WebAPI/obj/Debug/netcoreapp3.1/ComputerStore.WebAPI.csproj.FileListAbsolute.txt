@@ -47,5 +47,6 @@ C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\ComputerStore.Data.dll
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\ComputerStore.Data.pdb
-C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\obj\Debug\netcoreapp3.1\ComputerStore.WebAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\obj\Debug\netcoreapp3.1\ComputerStore.WebAPI.csproj.CopyComplete
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\obj\Debug\netcoreapp3.1\ComputerStore.WebAPI.MvcApplicationPartsAssemblyInfo.cache

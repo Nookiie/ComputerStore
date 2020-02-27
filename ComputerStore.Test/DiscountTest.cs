@@ -32,13 +32,13 @@ namespace ComputerStore.Test
 
             List<ItemOrder> itemOrders = new List<ItemOrder>()
             {
-                new ItemOrder(products[0], 12),
+                new ItemOrder(products[0], 1),
             };
 
             ShoppingCart cart = new ShoppingCart(itemOrders);
             ShoppingCartUtils.SetTotalPriceWithDiscount(cart);
 
-            Assert.True(ShoppingCartUtils.DebugMessages.Contains("No discount applied, order count is only 1"));
+            Assert.Equal((decimal) 129.40, cart.TotalPrice);
         }
 
         [Fact]

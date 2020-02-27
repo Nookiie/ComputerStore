@@ -45,6 +45,8 @@ namespace ComputerStore.WebAPI
 
             app.UseRouting();
 
+            app.UseCookiePolicy();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

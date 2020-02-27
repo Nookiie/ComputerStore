@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerStore.Data", "CS.Data\ComputerStore.Data.csproj", "{121602E6-810F-46DA-A1D6-31A9161B10D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerStore.Data", "CS.Data\ComputerStore.Data.csproj", "{121602E6-810F-46DA-A1D6-31A9161B10D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerStore.Common", "ComputerStore.Common\ComputerStore.Common.csproj", "{BC2F8242-6C21-45E5-A31F-2B2CFAE50965}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerStore.Common", "ComputerStore.Common\ComputerStore.Common.csproj", "{BC2F8242-6C21-45E5-A31F-2B2CFAE50965}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerStore.WebAPI", "ComputerStore.WebAPI\ComputerStore.WebAPI.csproj", "{C60230B6-4B8F-4283-B53F-1D52EA5FDCD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerStore.WebAPI", "ComputerStore.WebAPI\ComputerStore.WebAPI.csproj", "{C60230B6-4B8F-4283-B53F-1D52EA5FDCD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerStore.Services", "ComputerStore.Services\ComputerStore.Services.csproj", "{64E97E8A-B754-4B20-B7EA-B00F4CDA700A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerStore.Services", "ComputerStore.Services\ComputerStore.Services.csproj", "{64E97E8A-B754-4B20-B7EA-B00F4CDA700A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerStore.Test", "ComputerStore.Test\ComputerStore.Test.csproj", "{8B2B92DA-51D5-4139-9FFA-0E93BCD0C0A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerStore.Test", "ComputerStore.Test\ComputerStore.Test.csproj", "{8B2B92DA-51D5-4139-9FFA-0E93BCD0C0A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerStore.Repositories", "ComputerStore.Repositories\ComputerStore.Repositories.csproj", "{B542DD61-323F-4335-AC48-D4271302730E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{8B2B92DA-51D5-4139-9FFA-0E93BCD0C0A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B2B92DA-51D5-4139-9FFA-0E93BCD0C0A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B2B92DA-51D5-4139-9FFA-0E93BCD0C0A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B542DD61-323F-4335-AC48-D4271302730E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B542DD61-323F-4335-AC48-D4271302730E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B542DD61-323F-4335-AC48-D4271302730E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B542DD61-323F-4335-AC48-D4271302730E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,6 +15,7 @@ namespace ComputerStore.Data.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProductItem> Products { get; set; }
         public DbSet<ProductItem> ItemOrders { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -41,9 +42,9 @@ namespace ComputerStore.Data.Data
                 .Entries()
                 .Where(x => x.State == EntityState.Modified || x.State == EntityState.Added);
 
-            foreach(var entry in changedEntries)
+            foreach (var entry in changedEntries)
             {
-                var entity = (IAuditInfo) entry.Entity;
+                var entity = (IAuditInfo)entry.Entity;
                 if (entry.State == EntityState.Added && entity.CreatedOn == default)
                 {
                     entity.CreatedOn = DateTime.UtcNow;
@@ -53,7 +54,18 @@ namespace ComputerStore.Data.Data
                     entity.ModifiedOn = DateTime.UtcNow;
                 }
             }
-                
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder builder)
+        {
+            base.OnConfiguring(builder);
+
+            builder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB;Database=ComputerStoreDB;Trusted_Connection=True;MultipleActiveResultSets=True");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
