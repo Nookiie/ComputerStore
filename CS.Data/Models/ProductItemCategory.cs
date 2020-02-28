@@ -8,6 +8,11 @@ namespace ComputerStore.Data.Models
 {
     public class ProductItemCategory : BaseModel<int>
     {
+        public ProductItemCategory(int categoryID, int productID)
+        {
+            this.CategoryID = categoryID;
+            this.ProductID = productID;
+        }
         [ForeignKey(nameof(Category))]
         public int CategoryID { get; set; }
 

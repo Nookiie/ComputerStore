@@ -82,17 +82,17 @@ namespace ComputerStore.Data.Data
             });
 
             modelBuilder.Entity<ProductItemCategory>()
-                .HasKey(bc => new { bc.CategoryID, bc.ProductID });
+                .HasKey(pc => new { pc.CategoryID, pc.ProductID });
 
             modelBuilder.Entity<ProductItemCategory>()
-                .HasOne(bc => bc.ProductItem)
-                .WithMany(b => b.ProductItemCategories)
-                .HasForeignKey(bc => bc.ProductID);
-
-            modelBuilder.Entity<ProductItemCategory>()
-                .HasOne(bc => bc.Category)
+                .HasOne(pc => pc.ProductItem)
                 .WithMany(c => c.ProductItemCategories)
-                .HasForeignKey(bc => bc.CategoryID);
+                .HasForeignKey(pc => pc.ProductID);
+
+            modelBuilder.Entity<ProductItemCategory>()
+                .HasOne(pc => pc.Category)
+                .WithMany(c => c.ProductItemCategories)
+                .HasForeignKey(pc => pc.CategoryID);
 
             base.OnModelCreating(modelBuilder);
         }

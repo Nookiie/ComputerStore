@@ -22,20 +22,20 @@ namespace ComputerStore.WebAPI.Controllers
         private readonly GenericService<TEntity> _service;
 
         [HttpGet("[action]")]
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return _service.All();
         }
 
         [HttpGet("[action]/{id}")]
-        public async Task<TEntity> GetByID(int id)
+        public virtual async Task<TEntity> GetByID(int id)
         {
             return await _service.GetByID(id);
         }
 
         [HttpPost]
         [Route("[action]")]
-        public async Task<string> Create(TEntity entity)
+        public virtual async Task<string> Create(TEntity entity)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace ComputerStore.WebAPI.Controllers
         }
 
         [HttpDelete("[action]/{id}")]
-        public async Task<string> DeleteByID(int id)
+        public virtual async Task<string> DeleteByID(int id)
         {
             var entity = _service.GetByID(id);
             try
@@ -64,7 +64,7 @@ namespace ComputerStore.WebAPI.Controllers
         }
 
         [HttpPut("[action]")]
-        public async Task Update(TEntity entity)
+        public virtual async Task Update(TEntity entity)
         {
             await _service.Update(entity);
         }
