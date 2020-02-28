@@ -12,6 +12,11 @@ namespace ComputerStore.Data.Data
 {
     public class ComputerStoreDbContext : DbContext
     {
+        public ComputerStoreDbContext(DbContextOptions<ComputerStoreDbContext> options) : base(options)
+        {
+            
+        }
+
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProductItem> Products { get; set; }
         public DbSet<ProductItem> ItemOrders { get; set; }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ComputerStore.WebAPI.Controllers
 {
-    public class CategoryController : GenericController<Category>
+    public class ItemOrderController : GenericController<ItemOrder>
     {
-        public CategoryController(ComputerStoreDbContext context) : base(context)
+        public ItemOrderController(ComputerStoreDbContext context) : base(context)
         {
 
         }

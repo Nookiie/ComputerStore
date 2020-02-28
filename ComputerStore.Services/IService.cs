@@ -11,9 +11,9 @@ namespace ComputerStore.Services
     {
         Task<TEntity> Create(TEntity entity);
 
-        void Delete(TEntity entity);
+        Task Delete(TEntity entity);
 
-        void Update(TEntity entity);
+        Task Update(TEntity entity);
 
         IEnumerable<TEntity> All();
     }

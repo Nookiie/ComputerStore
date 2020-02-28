@@ -6,13 +6,12 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "ComputerStore.Services/1.0.0": {
+      "ComputerStore.Repositories/1.0.0": {
         "dependencies": {
-          "ComputerStore.Data": "1.0.0",
-          "ComputerStore.Repositories": "1.0.0"
+          "ComputerStore.Data": "1.0.0"
         },
         "runtime": {
-          "ComputerStore.Services.dll": {}
+          "ComputerStore.Repositories.dll": {}
         }
       },
       "Microsoft.Bcl.AsyncInterfaces/1.1.0": {
@@ -843,19 +842,11 @@
         "runtime": {
           "ComputerStore.Data.dll": {}
         }
-      },
-      "ComputerStore.Repositories/1.0.0": {
-        "dependencies": {
-          "ComputerStore.Data": "1.0.0"
-        },
-        "runtime": {
-          "ComputerStore.Repositories.dll": {}
-        }
       }
     }
   },
   "libraries": {
-    "ComputerStore.Services/1.0.0": {
+    "ComputerStore.Repositories/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1463,11 +1454,6 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "ComputerStore.Data/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "ComputerStore.Repositories/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

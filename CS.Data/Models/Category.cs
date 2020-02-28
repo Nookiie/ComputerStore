@@ -9,6 +9,11 @@ namespace ComputerStore.Data.Models
 {
     public class Category : BaseModel<int>
     {
+        public Category()
+        {
+
+        }
+
         public Category(string name,  string description)
         {
             Name = name;

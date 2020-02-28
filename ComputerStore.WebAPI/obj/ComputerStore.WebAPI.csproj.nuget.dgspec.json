@@ -4,14 +4,14 @@
     "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.WebAPI\\ComputerStore.WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.WebAPI\\ComputerStore.WebAPI.csproj": {
+    "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Repositories\\ComputerStore.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.WebAPI\\ComputerStore.WebAPI.csproj",
-        "projectName": "ComputerStore.WebAPI",
-        "projectPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.WebAPI\\ComputerStore.WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Repositories\\ComputerStore.Repositories.csproj",
+        "projectName": "ComputerStore.Repositories",
+        "projectPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Repositories\\ComputerStore.Repositories.csproj",
         "packagesPath": "C:\\Users\\Nookie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -44,6 +44,130 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Services\\ComputerStore.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Services\\ComputerStore.Services.csproj",
+        "projectName": "ComputerStore.Services",
+        "projectPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Services\\ComputerStore.Services.csproj",
+        "packagesPath": "C:\\Users\\Nookie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Nookie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Repositories\\ComputerStore.Repositories.csproj": {
+                "projectPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Repositories\\ComputerStore.Repositories.csproj"
+              },
+              "C:\\Users\\Nookie\\source\\repos\\CS.Data\\CS.Data\\ComputerStore.Data.csproj": {
+                "projectPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\CS.Data\\ComputerStore.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.WebAPI\\ComputerStore.WebAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.WebAPI\\ComputerStore.WebAPI.csproj",
+        "projectName": "ComputerStore.WebAPI",
+        "projectPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.WebAPI\\ComputerStore.WebAPI.csproj",
+        "packagesPath": "C:\\Users\\Nookie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.WebAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Nookie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Services\\ComputerStore.Services.csproj": {
+                "projectPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Services\\ComputerStore.Services.csproj"
+              },
+              "C:\\Users\\Nookie\\source\\repos\\CS.Data\\CS.Data\\ComputerStore.Data.csproj": {
+                "projectPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\CS.Data\\ComputerStore.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -58,6 +182,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
             }
           },
           "imports": [
