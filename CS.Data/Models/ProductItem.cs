@@ -4,6 +4,7 @@ using ComputerStore.Data.Models.Abstract;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ComputerStore.Data.Models
 {
@@ -20,7 +21,7 @@ namespace ComputerStore.Data.Models
             this.Description = description;
             this.Quantity = stockQuantity;
             this.Price = price;
-            this.Categories = categories;
+            this.CategoryObjects = categories;
         }
 
         [Required]
@@ -37,7 +38,10 @@ namespace ComputerStore.Data.Models
         public decimal Price { get; set; }
 
         // Used for Unit Testing
-        public ICollection<Category> Categories { get; set; }
+        public ICollection<Category> CategoryObjects { get; set; }
+
+        [NotMapped]
+        public ICollection<string> Categories { get; set; }
 
         public ICollection<ProductItemCategory> ProductItemCategories { get; set; }
     }

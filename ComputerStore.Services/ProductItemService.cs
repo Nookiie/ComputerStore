@@ -2,6 +2,7 @@
 using ComputerStore.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,15 +21,23 @@ namespace ComputerStore.Services
 
         public async override Task<ProductItem> Create(ProductItem product)
         {
-            foreach (var category in product.Categories)
+            foreach (var categoryString in product.Categories)
             {
-                await categoryService.Create(category);
+                await categoryService.Create(new Category(categoryString, ""));
             }
 
             await base.Create(product);
 
-            foreach(var category in product.Categories)
+            // Assigning foreign keys in many-many table
+            foreach (var categoryString in product.Categories)
             {
+                var category = categoryService.All().FirstOrDefault(x => x.Name == categoryString);
+
+                if (category == null)
+                {
+                    break;
+                }
+
                 await productItemCategoryService.Create(new ProductItemCategory(category.ID, product.ID));
             }
 

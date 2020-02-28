@@ -24,8 +24,14 @@ namespace ComputerStore.WebAPI.Controllers
             }
             catch (Exception e)
             {
-                return "Entity could not be saved to DB, Stack Trace: " + e.StackTrace;
+                return "Entity could not be saved to DB, Stack Trace: " + e.StackTrace + " " + e.Message;
             }
+        }
+
+        // Default Directory for Importing
+        public async Task<string> ImportJSON()
+        {
+            return "sdada";
         }
     }
 }

@@ -50,7 +50,7 @@ namespace ComputerStore.Common
                 }
                 else
                 {
-                    allCategories.Concat(order.ProductItem.Categories);
+                    allCategories.Concat(order.ProductItem.CategoryObjects);
                 }
 
                 var dupeCategories = allCategories.GroupBy(x => x.Name)
@@ -62,7 +62,7 @@ namespace ComputerStore.Common
                 {
                     foreach(var category in dupeCategories)
                     {
-                        if (order.ProductItem.Categories.Where(x => x.Name == category).Any())
+                        if (order.ProductItem.CategoryObjects.Where(x => x.Name == category).Any())
                         {
                             SetDiscount(order);
                         }
