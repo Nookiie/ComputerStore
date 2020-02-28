@@ -18,7 +18,7 @@ namespace ComputerStore.Data.Models
         {
             this.Name = name;
             this.Description = description;
-            this.StockQuantity = stockQuantity;
+            this.Quantity = stockQuantity;
             this.Price = price;
             this.Categories = categories;
         }
@@ -31,11 +31,14 @@ namespace ComputerStore.Data.Models
         public string Description { get; set; }
 
         [DefaultValue(0)]
-        public int StockQuantity { get; set; }
+        public int Quantity { get; set; }
 
         [DefaultValue(0)]
         public decimal Price { get; set; }
 
+        // Used for Unit Testing
         public ICollection<Category> Categories { get; set; }
+
+        public ICollection<ProductItemCategory> ProductItemCategories { get; set; }
     }
 }

@@ -18,9 +18,10 @@ namespace ComputerStore.Data.Data
         }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<ProductItem> Products { get; set; }
-        public DbSet<ProductItem> ItemOrders { get; set; }
+        public DbSet<ProductItem> ProductItems { get; set; }
+        public DbSet<ItemOrder> ItemOrders { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ProductItemCategory> ProductItemCategory { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -79,6 +80,19 @@ namespace ComputerStore.Data.Data
             {
                 builder.HasIndex(x => x.Name).IsUnique(true);
             });
+
+            modelBuilder.Entity<ProductItemCategory>()
+                .HasKey(bc => new { bc.CategoryID, bc.ProductID });
+
+            modelBuilder.Entity<ProductItemCategory>()
+                .HasOne(bc => bc.ProductItem)
+                .WithMany(b => b.ProductItemCategories)
+                .HasForeignKey(bc => bc.ProductID);
+
+            modelBuilder.Entity<ProductItemCategory>()
+                .HasOne(bc => bc.Category)
+                .WithMany(c => c.ProductItemCategories)
+                .HasForeignKey(bc => bc.CategoryID);
 
             base.OnModelCreating(modelBuilder);
         }

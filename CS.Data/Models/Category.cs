@@ -29,5 +29,7 @@ namespace ComputerStore.Data.Models
         
         [ForeignKey(nameof(Category))]
         public int SubcategoryID { get; set; }
+
+        public ICollection<ProductItemCategory> ProductItemCategories { get; set; }
     }
 }

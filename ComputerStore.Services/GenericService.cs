@@ -34,6 +34,7 @@ namespace ComputerStore.Services
         public async Task Update(TEntity entity)
         {
             _repo.Update(entity);
+
             await _context.SaveChangesAsync();
         }
 
@@ -41,12 +42,14 @@ namespace ComputerStore.Services
         {
             var entity = await _repo.GetByIdAsync(id);
             _repo.Update(entity);
+
             await _context.SaveChangesAsync();
         }
 
         public async Task Delete(TEntity entity)
         {
             _repo.Delete(entity);
+
             await _context.SaveChangesAsync();
         }
 
@@ -54,6 +57,7 @@ namespace ComputerStore.Services
         {
             var entity = await _repo.GetByIdAsync(id);
             _repo.Delete(entity);
+
             await _context.SaveChangesAsync();
         }
     }

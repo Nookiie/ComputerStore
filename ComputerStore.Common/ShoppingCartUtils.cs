@@ -77,7 +77,7 @@ namespace ComputerStore.Common
         {
             foreach (var order in cart.Orders)
             {
-                if (order.PurchaseQuantity > order.ProductItem.StockQuantity)
+                if (order.PurchaseQuantity > order.ProductItem.Quantity)
                 {
                     DebugMessages.Add(string.Format
                         ("Error, PurchaseQuantity is larger than StockQuantity of Item: {0}", order.ProductItem.Name));

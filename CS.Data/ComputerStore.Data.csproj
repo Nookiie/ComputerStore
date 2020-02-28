@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200228120928_ProductItemCategory_Create.cs" />
+    <Compile Remove="Migrations\20200228120928_ProductItemCategory_Create.Designer.cs" />
+    <Compile Remove="Migrations\20200228121042_ProductItemCategory_Create.cs" />
+    <Compile Remove="Migrations\20200228121042_ProductItemCategory_Create.Designer.cs" />
+    <Compile Remove="Migrations\20200228121417_ProductItemCategory_Create.cs" />
+    <Compile Remove="Migrations\20200228121417_ProductItemCategory_Create.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
       <PrivateAssets>all</PrivateAssets>

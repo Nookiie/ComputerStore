@@ -1,11 +1,8 @@
 ﻿using ComputerStore.Data.Data;
-using ComputerStore.Data.Models;
-using ComputerStore.Repositories.Implementations;
 using ComputerStore.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ComputerStore.WebAPI.Controllers
