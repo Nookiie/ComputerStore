@@ -40,14 +40,6 @@ namespace ComputerStore.Services
             await _context.SaveChangesAsync();
         }
 
-        public virtual async Task UpdateByID(int id)
-        {
-            var entity = await _repo.GetByIdAsync(id);
-            _repo.Update(entity);
-
-            await _context.SaveChangesAsync();
-        }
-
         public virtual async Task Delete(TEntity entity)
         {
             _repo.Delete(entity);

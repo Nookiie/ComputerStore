@@ -71,9 +71,17 @@ namespace ComputerStore.WebAPI.Controllers
         }
 
         [HttpPut("[action]")]
-        public virtual async Task Update(TEntity entity)
+        public virtual async Task<string> Update(TEntity entity)
         {
-            await _service.Update(entity);
+            try
+            {
+                await _service.Update(entity);
+                return "Entity has been successfully updated";
+            }
+            catch (Exception e)
+            {
+                return "Failed to update entity': " + e.StackTrace + e.Message;
+            }
         }
 
         [HttpPost("[action]")]
