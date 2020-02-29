@@ -1,8 +1,14 @@
-﻿using ComputerStore.Data.Data;
+﻿using BrunoZell.ModelBinding;
+using ComputerStore.Data.Data;
+using ComputerStore.Data.Models;
 using ComputerStore.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace ComputerStore.WebAPI.Controllers
@@ -67,6 +73,38 @@ namespace ComputerStore.WebAPI.Controllers
         public virtual async Task Update(TEntity entity)
         {
             await _service.Update(entity);
+        }
+
+        [HttpPost("[action]")]
+        public virtual async Task<string> ImportJSON(
+            [ModelBinder(BinderType = typeof(JsonModelBinder))] string fileValues,
+                IList<IFormFile> files)
+        {
+            try
+            {
+                foreach (var file in files)
+                {
+                    using (StreamReader streamReader = new StreamReader(file.OpenReadStream()))
+                    using (JsonTextReader jsonReader = new JsonTextReader(streamReader))
+                    {
+                        fileValues = JToken.ReadFrom(jsonReader).ToString();
+                    }
+
+                    var products = JsonConvert.DeserializeObject<IList<TEntity>>(fileValues);
+
+                    foreach (var product in products)
+                    {
+                        await _service.Create(product);
+                    }
+
+                    return string.Format("JSON file:{0} imported successfully", file.FileName);
+                }
+            }
+            catch (Exception e)
+            {
+                return "Error, could not import JSON file: " + e.StackTrace + e.Message;
+            }
+            return "Could not import JSON file";
         }
     }
 }

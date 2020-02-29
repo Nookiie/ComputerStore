@@ -54,4 +54,9 @@ C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\ComputerStore.Services.pdb
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\ComputerStore.Repositories.pdb
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\JsonModelBinder.dll
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\obj\Debug\netcoreapp3.1\ComputerStore.WebAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\obj\Debug\netcoreapp3.1\ComputerStore.WebAPI.MvcApplicationPartsAssemblyInfo.cache
