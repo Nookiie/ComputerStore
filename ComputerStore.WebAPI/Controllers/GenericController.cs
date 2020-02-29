@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ComputerStore.WebAPI.Controllers
@@ -80,6 +81,8 @@ namespace ComputerStore.WebAPI.Controllers
             [ModelBinder(BinderType = typeof(JsonModelBinder))] string fileValues,
                 IList<IFormFile> files)
         {
+            IList<string> debugMessages = new List<string>();
+            StringBuilder sb = new StringBuilder();
             try
             {
                 foreach (var file in files)
@@ -97,14 +100,22 @@ namespace ComputerStore.WebAPI.Controllers
                         await _service.Create(product);
                     }
 
-                    return string.Format("JSON file:{0} imported successfully", file.FileName);
+                    debugMessages.Add(string.Format("JSON file:{0} imported successfully \n", file.FileName));
                 }
             }
             catch (Exception e)
             {
                 return "Error, could not import JSON file: " + e.StackTrace + e.Message;
             }
-            return "Could not import JSON file";
+            finally
+            {
+                foreach (var message in debugMessages)
+                {
+                    sb.Append(message);
+                }
+            }
+
+            return sb.ToString();
         }
     }
 }

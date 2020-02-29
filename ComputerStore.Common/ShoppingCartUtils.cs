@@ -60,9 +60,9 @@ namespace ComputerStore.Common
 
                 if (dupeCategories.Any())
                 {
-                    foreach(var category in dupeCategories)
+                    foreach(var categoryName in dupeCategories)
                     {
-                        if (order.ProductItem.CategoryObjects.Where(x => x.Name == category).Any())
+                        if (order.ProductItem.CategoryObjects.Any(x => x.Name == categoryName))
                         {
                             SetDiscount(order);
                         }
@@ -73,7 +73,7 @@ namespace ComputerStore.Common
             SetCartTotalPrice(cart);
         }
 
-        public static bool IsCartValid(ShoppingCart cart)
+        private static bool IsCartValid(ShoppingCart cart)
         {
             foreach (var order in cart.Orders)
             {
@@ -88,7 +88,7 @@ namespace ComputerStore.Common
             return true;
         }
 
-        public static void SetCartTotalPrice(ShoppingCart cart)
+        private static void SetCartTotalPrice(ShoppingCart cart)
         {
             foreach (var order in cart.Orders)
             {
@@ -96,7 +96,7 @@ namespace ComputerStore.Common
             }
         }
 
-        public static void SetDiscount(ItemOrder order)
+        private static void SetDiscount(ItemOrder order)
         {
             order.TotalPrice = (order.ProductItem.Price - (GlobalConstants.DEFAULT_DISCOUNT * order.ProductItem.Price))
                         + (order.ProductItem.Price * (order.PurchaseQuantity - 1));

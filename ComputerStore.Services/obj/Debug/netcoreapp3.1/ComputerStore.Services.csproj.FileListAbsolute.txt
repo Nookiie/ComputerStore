@@ -11,3 +11,5 @@ C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Services\bin\Debug\netcoreapp
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Services\bin\Debug\netcoreapp3.1\ComputerStore.Repositories.pdb
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Services\bin\Debug\netcoreapp3.1\ComputerStore.Data.pdb
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Services\obj\Debug\netcoreapp3.1\ComputerStore.Services.csproj.CopyComplete
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Services\bin\Debug\netcoreapp3.1\ComputerStore.Common.dll
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.Services\bin\Debug\netcoreapp3.1\ComputerStore.Common.pdb

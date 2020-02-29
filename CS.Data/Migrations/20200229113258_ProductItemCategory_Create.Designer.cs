@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ComputerStore.Data.Migrations
 {
     [DbContext(typeof(ComputerStoreDbContext))]
-    [Migration("20200228122948_ProductItemCategory_Create")]
+    [Migration("20200229113258_ProductItemCategory_Create")]
     partial class ProductItemCategory_Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -131,22 +131,26 @@ namespace ComputerStore.Data.Migrations
 
             modelBuilder.Entity("ComputerStore.Data.Models.ProductItemCategory", b =>
                 {
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ProductID")
+                    b.Property<int>("CategoryID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ID")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("CategoryID", "ProductID");
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CategoryID");
 
                     b.HasIndex("ProductID");
 
@@ -183,7 +187,7 @@ namespace ComputerStore.Data.Migrations
             modelBuilder.Entity("ComputerStore.Data.Models.Category", b =>
                 {
                     b.HasOne("ComputerStore.Data.Models.ProductItem", null)
-                        .WithMany("Categories")
+                        .WithMany("CategoryObjects")
                         .HasForeignKey("ProductItemID");
                 });
 

@@ -6,8 +6,6 @@ using ComputerStore.Data.Models.Abstract;
 
 namespace ComputerStore.Data.Models
 {
-    // It's a good idea for the shopping cart to inherit BaseModel,
-    // would help later on with troubleshooting client transaction errors
     public class ShoppingCart : BaseModel<int>
     {
         public ShoppingCart()

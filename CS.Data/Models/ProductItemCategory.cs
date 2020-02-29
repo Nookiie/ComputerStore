@@ -13,6 +13,7 @@ namespace ComputerStore.Data.Models
             this.CategoryID = categoryID;
             this.ProductID = productID;
         }
+
         [ForeignKey(nameof(Category))]
         public int CategoryID { get; set; }
 

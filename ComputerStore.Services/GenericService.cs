@@ -3,6 +3,7 @@ using ComputerStore.Data.Models;
 using ComputerStore.Repositories.Implementations;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,8 +12,8 @@ namespace ComputerStore.Services
     public class GenericService<TEntity> : IService<TEntity>
         where TEntity : class
     {
-        private readonly ComputerStoreDbContext _context;
-        private readonly GenericRepository<TEntity> _repo;
+        protected readonly ComputerStoreDbContext _context;
+        protected readonly GenericRepository<TEntity> _repo;
 
         public GenericService(ComputerStoreDbContext context)
         {
@@ -28,6 +29,7 @@ namespace ComputerStore.Services
         {
             await _repo.AddAsync(entity);
             await _context.SaveChangesAsync();
+
             return entity;
         }
 

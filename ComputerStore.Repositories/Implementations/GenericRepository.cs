@@ -53,6 +53,5 @@ namespace ComputerStore.Repositories.Implementations
 
             entry.State = EntityState.Modified;
         }
-
     }
 }

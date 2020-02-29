@@ -60,3 +60,5 @@ C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\obj\Debug\netcoreapp3.1\ComputerStore.WebAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\obj\Debug\netcoreapp3.1\ComputerStore.WebAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\ComputerStore.Common.dll
+C:\Users\Nookie\source\repos\CS.Data\ComputerStore.WebAPI\bin\Debug\netcoreapp3.1\ComputerStore.Common.pdb

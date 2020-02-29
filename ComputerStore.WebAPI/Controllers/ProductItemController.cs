@@ -1,7 +1,10 @@
-﻿using ComputerStore.Data.Data;
+﻿using ComputerStore.Common;
+using ComputerStore.Data.Data;
 using ComputerStore.Data.Models;
 using ComputerStore.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ComputerStore.WebAPI.Controllers
@@ -15,6 +18,7 @@ namespace ComputerStore.WebAPI.Controllers
 
         ProductItemService service;
 
+        [HttpPost("[action]")]
         public override async Task<string> Create(ProductItem entity)
         {
             try

@@ -1335,6 +1335,19 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "ComputerStore.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "ComputerStore.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ComputerStore.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ComputerStore.Common.dll": {}
+        }
+      },
       "ComputerStore.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -1366,6 +1379,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "ComputerStore.Common": "1.0.0",
           "ComputerStore.Data": "1.0.0",
           "ComputerStore.Repositories": "1.0.0"
         },
@@ -5132,6 +5146,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "ComputerStore.Common/1.0.0": {
+      "type": "project",
+      "path": "../ComputerStore.Common/ComputerStore.Common.csproj",
+      "msbuildProject": "../ComputerStore.Common/ComputerStore.Common.csproj"
+    },
     "ComputerStore.Data/1.0.0": {
       "type": "project",
       "path": "../CS.Data/ComputerStore.Data.csproj",
@@ -5150,6 +5169,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "ComputerStore.Common >= 1.0.0",
       "ComputerStore.Data >= 1.0.0",
       "ComputerStore.Services >= 1.0.0",
       "JsonModelBinder >= 2.1.1",
@@ -5189,6 +5209,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Common\\ComputerStore.Common.csproj": {
+              "projectPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Common\\ComputerStore.Common.csproj"
+            },
             "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Services\\ComputerStore.Services.csproj": {
               "projectPath": "C:\\Users\\Nookie\\source\\repos\\CS.Data\\ComputerStore.Services\\ComputerStore.Services.csproj"
             },

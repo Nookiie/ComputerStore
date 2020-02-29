@@ -16,26 +16,37 @@ namespace ComputerStore.Services
             productItemCategoryService = new GenericService<ProductItemCategory>(context);
         }
 
-        GenericService<Category> categoryService;
-        GenericService<ProductItemCategory> productItemCategoryService;
+        protected readonly GenericService<Category> categoryService;
+        protected readonly GenericService<ProductItemCategory> productItemCategoryService;
 
         public async override Task<ProductItem> Create(ProductItem product)
         {
-            foreach (var categoryString in product.Categories)
+            var categoryStringList = product.Categories.ToList();
+            for (int i = 0; i < product.Categories.Count; i++)
             {
+                categoryStringList[i] = categoryStringList[i].Replace(" ", "");
+            }
+
+            foreach (var categoryString in categoryStringList)
+            {
+                if (categoryService.All().Any(x => x.Name == categoryString))
+                {
+                    continue;
+                }
+
                 await categoryService.Create(new Category(categoryString, ""));
             }
 
             await base.Create(product);
 
             // Assigning foreign keys in many-many table
-            foreach (var categoryString in product.Categories)
+            foreach (var categoryString in categoryStringList)
             {
                 var category = categoryService.All().FirstOrDefault(x => x.Name == categoryString);
 
                 if (category == null)
                 {
-                    break;
+                    continue;
                 }
 
                 await productItemCategoryService.Create(new ProductItemCategory(category.ID, product.ID));

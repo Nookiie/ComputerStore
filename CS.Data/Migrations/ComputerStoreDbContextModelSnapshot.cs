@@ -129,22 +129,26 @@ namespace ComputerStore.Data.Migrations
 
             modelBuilder.Entity("ComputerStore.Data.Models.ProductItemCategory", b =>
                 {
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ProductID")
+                    b.Property<int>("CategoryID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ID")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("CategoryID", "ProductID");
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CategoryID");
 
                     b.HasIndex("ProductID");
 
@@ -181,7 +185,7 @@ namespace ComputerStore.Data.Migrations
             modelBuilder.Entity("ComputerStore.Data.Models.Category", b =>
                 {
                     b.HasOne("ComputerStore.Data.Models.ProductItem", null)
-                        .WithMany("Categories")
+                        .WithMany("CategoryObjects")
                         .HasForeignKey("ProductItemID");
                 });
 

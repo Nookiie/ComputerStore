@@ -69,15 +69,16 @@ namespace ComputerStore.Data.Migrations
                 name: "ProductItemCategory",
                 columns: table => new
                 {
-                    CategoryID = table.Column<int>(nullable: false),
-                    ProductID = table.Column<int>(nullable: false),
-                    ID = table.Column<int>(nullable: false),
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true)
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    CategoryID = table.Column<int>(nullable: false),
+                    ProductID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductItemCategory", x => new { x.CategoryID, x.ProductID });
+                    table.PrimaryKey("PK_ProductItemCategory", x => x.ID);
                     table.ForeignKey(
                         name: "FK_ProductItemCategory_Categories_CategoryID",
                         column: x => x.CategoryID,
@@ -103,6 +104,11 @@ namespace ComputerStore.Data.Migrations
                 table: "ProductItems",
                 column: "Name",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductItemCategory_CategoryID",
+                table: "ProductItemCategory",
+                column: "CategoryID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductItemCategory_ProductID",
