@@ -66,17 +66,17 @@ namespace ComputerStore.Services
 
             return await Submit(cart);
         }
-
+            
         // Loading all object values into the cart's corresponding entities 
         private async Task SetShoppingCart(ShoppingCart cart)
         {
             var itemOrders = itemOrderService.All()
-                .Where(x => x.ShoppingCartID == cart.ID)
-                .ToList();
+                .Where(x => x.ShoppingCartID == cart.ID);
 
             foreach (var itemOrder in itemOrders)
             {
                 itemOrder.ProductItem = await productItemService.GetByID(itemOrder.ProductItemID);
+
                 var productItemCategories = productItemCategoryService.All()
                     .Where(x => x.ProductID == itemOrder.ProductItemID);
 
@@ -89,7 +89,7 @@ namespace ComputerStore.Services
                 itemOrder.ShoppingCart = cart;
             }
 
-            cart.ItemOrders = itemOrders;
+            cart.ItemOrders = itemOrders.ToList();
         }
     }
 }

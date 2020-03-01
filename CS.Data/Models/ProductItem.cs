@@ -15,7 +15,7 @@ namespace ComputerStore.Data.Models
 
         }
 
-        public ProductItem(string name, string description, int stockQuantity, decimal price, ICollection<Category> categories)
+        public ProductItem(string name, string description, int stockQuantity, decimal price, IList<Category> categories)
         {
             this.Name = name;
             this.Description = description;
@@ -38,7 +38,7 @@ namespace ComputerStore.Data.Models
         public decimal Price { get; set; }
 
         // Used for Unit Testing
-        public ICollection<Category> CategoryObjects { get; set; }
+        public IList<Category> CategoryObjects { get; set; } = new List<Category>();
 
         [NotMapped]
         public ICollection<string> Categories { get; set; }

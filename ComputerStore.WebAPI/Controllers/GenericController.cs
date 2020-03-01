@@ -23,22 +23,22 @@ namespace ComputerStore.WebAPI.Controllers
         public GenericController(ComputerStoreDbContext context)
         {
             this._context = context;
-            _service = new GenericService<TEntity>(context);
+            service = new GenericService<TEntity>(context);
         }
 
         private readonly ComputerStoreDbContext _context;
-        private readonly GenericService<TEntity> _service;
+        private readonly GenericService<TEntity> service;
 
         [HttpGet("[action]")]
         public virtual IEnumerable<TEntity> GetAll()
         {
-            return _service.All();
+            return service.All();
         }
 
         [HttpGet("[action]/{id}")]
         public virtual async Task<TEntity> GetByID(int id)
         {
-            return await _service.GetByID(id);
+            return await service.GetByID(id);
         }
 
         [HttpPost]
@@ -47,7 +47,7 @@ namespace ComputerStore.WebAPI.Controllers
         {
             try
             {
-                await _service.Create(entity);
+                await service.Create(entity);
                 return GlobalConstants.DB_ENTITY_ADD_SUCCESS;
             }
             catch (Exception e)
@@ -59,10 +59,10 @@ namespace ComputerStore.WebAPI.Controllers
         [HttpDelete("[action]/{id}")]
         public virtual async Task<string> DeleteByID(int id)
         {
-            var entity = _service.GetByID(id);
+            var entity = service.GetByID(id);
             try
             {
-                await _service.DeleteByID(id);
+                await service.DeleteByID(id);
                 return GlobalConstants.DB_ENTITY_REMOVE_SUCCESS;
             }
             catch (Exception e)
@@ -76,7 +76,7 @@ namespace ComputerStore.WebAPI.Controllers
         {
             try
             {
-                await _service.Update(entity);
+                await service.Update(entity);
                 return GlobalConstants.DB_ENTITY_UPDATE_SUCCESS;
             }
             catch (Exception e)
@@ -106,7 +106,7 @@ namespace ComputerStore.WebAPI.Controllers
 
                     foreach (var product in products)
                     {
-                        await _service.Create(product);
+                        await service.Create(product);
                     }
 
                     debugMessages.Add(string.Format("JSON file:{0} imported successfully \n", file.FileName));

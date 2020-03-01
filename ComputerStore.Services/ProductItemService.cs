@@ -18,7 +18,7 @@ namespace ComputerStore.Services
 
         protected readonly GenericService<Category> categoryService;
         protected readonly GenericService<ProductItemCategory> productItemCategoryService;
-
+        
         public async override Task<ProductItem> Create(ProductItem product)
         {
             var categoryStringList = product.Categories.ToList();
