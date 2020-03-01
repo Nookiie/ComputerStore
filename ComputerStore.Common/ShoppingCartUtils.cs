@@ -25,22 +25,24 @@ namespace ComputerStore.Common
 
             if (!IsCartValid(cart))
             {
-                DebugMessages.Add("Error, cart is not valid");
+                DebugMessages.Add("Cart is not valid");
+                cart.IsValid = false;
+
                 return;
             }
 
-            if (cart.Orders.Count <= 0)
+            if (cart.ItemOrders.Count <= 0)
             {
                 DebugMessages.Add("No discount applied, order count is empty");
             }
 
-            else if (cart.Orders.Count == 1)
+            else if (cart.ItemOrders.Count == 1)
             {
                 DebugMessages.Add("No discount applied, order count is only 1");
             }
 
-            var allCategories = new List<Category>();
-            foreach (var order in cart.Orders)
+            var cartCategories = new List<Category>();
+            foreach (var order in cart.ItemOrders)
             {
                 if (order.PurchaseQuantity > 1)
                 {
@@ -49,20 +51,23 @@ namespace ComputerStore.Common
                     DebugMessages.Add("Discount applied on: " + order.ID + ", due to quantity > 1");
                 }
 
-                allCategories.Concat(order.ProductItem.CategoryObjects);
-
-                var dupeCategories = allCategories.GroupBy(x => x.Name)
-                                          .Where(x => x.Count() > 1)
-                                          .Select(x => x.Key)
-                                          .ToList();
-
-                if (dupeCategories.Any())
+                if (order.ProductItem.CategoryObjects != null)
                 {
-                    foreach (var categoryName in dupeCategories)
+                    cartCategories.Concat(order.ProductItem.CategoryObjects);
+
+                    var dupeCategories = cartCategories.GroupBy(x => x.Name)
+                                              .Where(x => x.Count() > 1)
+                                              .Select(x => x.Key)
+                                              .ToList();
+
+                    if (dupeCategories.Any())
                     {
-                        if (order.ProductItem.CategoryObjects.Any(x => x.Name == categoryName))
+                        foreach (var categoryName in dupeCategories)
                         {
-                            SetDiscount(order);
+                            if (order.ProductItem.CategoryObjects.Any(x => x.Name == categoryName))
+                            {
+                                SetDiscount(order);
+                            }
                         }
                     }
                 }
@@ -73,7 +78,7 @@ namespace ComputerStore.Common
 
         private static bool IsCartValid(ShoppingCart cart)
         {
-            foreach (var order in cart.Orders)
+            foreach (var order in cart.ItemOrders)
             {
                 if (order.PurchaseQuantity > order.ProductItem.Quantity)
                 {
@@ -88,7 +93,7 @@ namespace ComputerStore.Common
 
         private static void SetCartTotalPrice(ShoppingCart cart)
         {
-            foreach (var order in cart.Orders)
+            foreach (var order in cart.ItemOrders)
             {
                 cart.TotalPrice += order.TotalPrice;
             }

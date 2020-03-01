@@ -15,10 +15,10 @@ namespace ComputerStore.Data.Models
 
         public ShoppingCart(ICollection<ItemOrder> Orders)
         {
-            this.Orders = Orders;
+            this.ItemOrders = Orders;
         }
 
-        public ICollection<ItemOrder> Orders { get; set; } = new List<ItemOrder>();
+        public ICollection<ItemOrder> ItemOrders { get; set; } = new List<ItemOrder>();
 
         public decimal TotalPrice { get; set; } = 0;
 

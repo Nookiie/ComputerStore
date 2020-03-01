@@ -16,22 +16,26 @@ namespace ComputerStore.Services
 
         public override async Task<ItemOrder> Create(ItemOrder entity)
         {
-            if (entity.PurchaseQuantity <= 0)
-            {
-                entity.PurchaseQuantity = 1;
-            }
+            SetItemOrder(entity);
 
             return await base.Create(entity);
         }
 
         public override async Task Update(ItemOrder entity)
         {
+            SetItemOrder(entity);
+
+            await base.Update(entity);
+        }
+
+        private void SetItemOrder(ItemOrder entity)
+        {
             if (entity.PurchaseQuantity <= 0)
             {
                 entity.PurchaseQuantity = 1;
             }
 
-            await base.Update(entity);
+
         }
     }
 }
