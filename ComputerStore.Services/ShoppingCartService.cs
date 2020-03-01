@@ -35,6 +35,7 @@ namespace ComputerStore.Services
 
             if (ShoppingCartUtils.SetTotalPriceWithDiscount(cart))
             {
+                cart.IsPaid = true;
                 await Update(cart);
 
                 // Updating every productItem's StockQuantity after submitting the cart

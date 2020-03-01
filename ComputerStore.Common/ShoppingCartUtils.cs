@@ -23,6 +23,12 @@ namespace ComputerStore.Common
         {
             DebugMessages.Clear();
 
+            if (cart.IsPaid)
+            {
+                DebugMessages.Add("Cart has already been processed");
+                return false;
+            }
+
             if (!IsCartValid(cart))
             {
                 DebugMessages.Add("Cart is not valid");
@@ -30,7 +36,7 @@ namespace ComputerStore.Common
 
                 return false;
             }
-
+            
             cart.IsValid = true;
 
             if (cart.ItemOrders.Count <= 0)
@@ -104,8 +110,7 @@ namespace ComputerStore.Common
 
         private static void SetDiscount(ItemOrder order)
         {
-            order.TotalPrice = (order.ProductItem.Price - (GlobalConstants.DEFAULT_DISCOUNT * order.ProductItem.Price))
-                        + (order.ProductItem.Price * (order.PurchaseQuantity - 1));
+            order.TotalPrice = order.ProductItem.Price * (order.PurchaseQuantity - GlobalConstants.DEFAULT_DISCOUNT);
         }
     }
 }
