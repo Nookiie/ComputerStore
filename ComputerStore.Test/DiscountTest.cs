@@ -13,7 +13,7 @@ namespace ComputerStore.Test
             ShoppingCart cart = new ShoppingCart();
             ShoppingCartUtils.SetTotalPriceWithDiscount(cart);
 
-            Assert.True(ShoppingCartUtils.DebugMessages.Contains("No discount applied, order count is empty"));
+            Assert.True(ShoppingCartUtils.DebugMessages.Contains("Cart has no orders"));
         }
 
         [Fact]
@@ -71,7 +71,7 @@ namespace ComputerStore.Test
             ShoppingCart cart = new ShoppingCart(itemOrders);
             ShoppingCartUtils.SetTotalPriceWithDiscount(cart);
 
-            Assert.Equal((decimal) 304.53, cart.TotalPrice);
+            Assert.Equal((decimal) 301.92, cart.TotalPrice);
         }
 
         [Fact]
@@ -136,7 +136,7 @@ namespace ComputerStore.Test
             ShoppingCart cart = new ShoppingCart(itemOrders);
             ShoppingCartUtils.SetTotalPriceWithDiscount(cart);
 
-            Assert.True(ShoppingCartUtils.DebugMessages.Contains("Error, cart is not valid"));
+            Assert.True(ShoppingCartUtils.DebugMessages.Contains("Cart is not valid"));
         }
     }
 }

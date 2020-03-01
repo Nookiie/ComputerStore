@@ -23,6 +23,12 @@ namespace ComputerStore.Common
         {
             DebugMessages.Clear();
 
+            if (cart.ItemOrders.Count == 0)
+            {
+                DebugMessages.Add("Cart has no orders");
+                return false;
+            }
+
             if (cart.IsPaid)
             {
                 DebugMessages.Add("Cart has already been processed");
@@ -36,7 +42,6 @@ namespace ComputerStore.Common
 
                 return false;
             }
-
 
             var cartCategories = new Dictionary<IEnumerable<string>, decimal>();
 
@@ -54,6 +59,8 @@ namespace ComputerStore.Common
                     cartCategories.Add(order.ProductItem.CategoryObjects.Select(x => x.Name), order.ProductItem.Price);
                 }
             }
+
+            SetCartTotalPrice(cart);
             SetDiscountByCategory(cart, cartCategories);
 
             return true;
@@ -97,19 +104,28 @@ namespace ComputerStore.Common
 
         private static void SetDiscountByCategory(ShoppingCart cart, Dictionary<IEnumerable<string>, decimal> cartCategories)
         {
-            SetCartTotalPrice(cart);
-            Dictionary<string, decimal> categories = new Dictionary<string, decimal>();
+            IList<KeyValuePair<string, decimal>> categories = new List<KeyValuePair<string, decimal>>();
+
             foreach (var distionaryEntry in cartCategories)
             {
                 foreach (string categoryName in distionaryEntry.Key)
                 {
-                    categories.Add(categoryName, distionaryEntry.Value);
+                    categories.Add(new KeyValuePair<string, decimal>(categoryName, distionaryEntry.Value));
                 }
             }
 
-            var dupeCategories = categories.GroupBy(x => x.Key);
+            var dupeCategories = categories
+                .GroupBy(x => x.Key)
+                .Select(x => new
+                {
+                    x.Key,
+                    Count = x.Count(),
+                    Amount = x.Select(y => y.Value)
+                })
+                .Where(x => x.Count > 1)
+                .ToList();
 
-            var sum = dupeCategories.Sum(x => x.Key);
+            var sum = dupeCategories.Sum(x => x.Amount.Sum());
 
             cart.TotalPrice -= sum * GlobalConstants.DEFAULT_DISCOUNT;
         }
