@@ -15,10 +15,12 @@ namespace ComputerStore.Services
 
         }
 
-        public async Task<string> ApplyDiscount(ShoppingCart cart)
+        public async Task<string> Submit(ShoppingCart cart)
         {
+            #region Discount
             ShoppingCartUtils.SetTotalPriceWithDiscount(cart);
             await Update(cart);
+            #endregion
 
             return string.Join(", ", ShoppingCartUtils.DebugMessages);
         }

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ComputerStore.WebAPI.Controllers
 {
-    public class ProductItemController : GenericController<ProductItem>
+    public class ProductItemsController : GenericController<ProductItem>
     {
-        public ProductItemController(ComputerStoreDbContext context) : base(context)
+        public ProductItemsController(ComputerStoreDbContext context) : base(context)
         {
             service = new ProductItemService(context);
         }

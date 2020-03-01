@@ -22,7 +22,6 @@ namespace ComputerStore.Data.Data
         public DbSet<ItemOrder> ItemOrders { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<ProductItemCategory> ProductItemCategory { get; set; }
-        public DbSet<ShoppingCartItemOrder> ShoppingCartItemOrder { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

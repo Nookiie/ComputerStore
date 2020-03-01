@@ -33,7 +33,7 @@ namespace ComputerStore.Common
             {
                 DebugMessages.Add("No discount applied, order count is empty");
             }
-          
+
             else if (cart.Orders.Count == 1)
             {
                 DebugMessages.Add("No discount applied, order count is only 1");
@@ -48,10 +48,8 @@ namespace ComputerStore.Common
 
                     DebugMessages.Add("Discount applied on: " + order.ID + ", due to quantity > 1");
                 }
-                else
-                {
-                    allCategories.Concat(order.ProductItem.CategoryObjects);
-                }
+
+                allCategories.Concat(order.ProductItem.CategoryObjects);
 
                 var dupeCategories = allCategories.GroupBy(x => x.Name)
                                           .Where(x => x.Count() > 1)
@@ -60,7 +58,7 @@ namespace ComputerStore.Common
 
                 if (dupeCategories.Any())
                 {
-                    foreach(var categoryName in dupeCategories)
+                    foreach (var categoryName in dupeCategories)
                     {
                         if (order.ProductItem.CategoryObjects.Any(x => x.Name == categoryName))
                         {

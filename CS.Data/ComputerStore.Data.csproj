@@ -19,6 +19,12 @@
     <Compile Remove="Migrations\20200229112832_ShoppingCartItemOrder_Create.Designer.cs" />
     <Compile Remove="Migrations\20200229113411_ShoppingCartItemOrder_Create.cs" />
     <Compile Remove="Migrations\20200229113411_ShoppingCartItemOrder_Create.Designer.cs" />
+    <Compile Remove="Migrations\20200301091415_ItemOrder_FK_ShoppingCartID_Add.cs" />
+    <Compile Remove="Migrations\20200301091415_ItemOrder_FK_ShoppingCartID_Add.Designer.cs" />
+    <Compile Remove="Migrations\20200301094703_ItemOrder_FK_ShoppingCart_Add.cs" />
+    <Compile Remove="Migrations\20200301094703_ItemOrder_FK_ShoppingCart_Add.Designer.cs" />
+    <Compile Remove="Migrations\20200301095034_ItemOrder_FK_ShoppingCart_Add.cs" />
+    <Compile Remove="Migrations\20200301095034_ItemOrder_FK_ShoppingCart_Add.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
