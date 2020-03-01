@@ -25,9 +25,9 @@ namespace ComputerStore.WebAPI.Controllers
                 await service.Submit(cart);
                 return "Order successfully submitted";
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                return "Could not submit order: "+ e.StackTrace + e.Message;
+                return "Could not submit order: " + e.StackTrace + e.Message;
             }
         }
     }

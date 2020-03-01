@@ -1,4 +1,5 @@
 ﻿using BrunoZell.ModelBinding;
+using ComputerStore.Common;
 using ComputerStore.Data.Data;
 using ComputerStore.Data.Models;
 using ComputerStore.Services;
@@ -47,11 +48,11 @@ namespace ComputerStore.WebAPI.Controllers
             try
             {
                 await _service.Create(entity);
-                return "Entity has been saved to DB";
+                return GlobalConstants.DB_ENTITY_ADD_SUCCESS;
             }
             catch (Exception e)
             {
-                return "Entity could not be saved to DB, Stack Trace: " + e.StackTrace;
+                return GlobalConstants.DB_ENTITY_ADD_FAIL + e.StackTrace + e.Message;
             }
         }
 
@@ -62,11 +63,11 @@ namespace ComputerStore.WebAPI.Controllers
             try
             {
                 await _service.DeleteByID(id);
-                return "Entity has been deleted from DB";
+                return GlobalConstants.DB_ENTITY_REMOVE_SUCCESS;
             }
             catch (Exception e)
             {
-                return "Entity could not be deleted from DB, Stack Trace: " + e.StackTrace;
+                return GlobalConstants.DB_ENTITY_REMOVE_FAIL + e.StackTrace;
             }
         }
 
@@ -76,11 +77,11 @@ namespace ComputerStore.WebAPI.Controllers
             try
             {
                 await _service.Update(entity);
-                return "Entity has been successfully updated";
+                return GlobalConstants.DB_ENTITY_UPDATE_SUCCESS;
             }
             catch (Exception e)
             {
-                return "Failed to update entity': " + e.StackTrace + e.Message;
+                return GlobalConstants.DB_ENTITY_UPDATE_FAIL + e.StackTrace + e.Message;
             }
         }
 

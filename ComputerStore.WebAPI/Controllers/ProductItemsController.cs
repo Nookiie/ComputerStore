@@ -24,11 +24,11 @@ namespace ComputerStore.WebAPI.Controllers
             try
             {
                 await service.Create(entity);
-                return "Entity has been saved to DB";
+                return GlobalConstants.DB_ENTITY_ADD_SUCCESS;
             }
             catch (Exception e)
             {
-                return "Entity could not be saved to DB, Stack Trace: " + e.StackTrace + " " + e.Message;
+                return GlobalConstants.DB_ENTITY_ADD_FAIL + e.StackTrace + e.Message;
             }
         }
     }
