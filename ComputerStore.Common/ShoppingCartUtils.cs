@@ -36,64 +36,46 @@ namespace ComputerStore.Common
 
                 return false;
             }
-            
-            cart.IsValid = true;
 
-            if (cart.ItemOrders.Count <= 0)
-            {
-                DebugMessages.Add("No discount applied, order count is empty");
-            }
 
-            else if (cart.ItemOrders.Count == 1)
-            {
-                DebugMessages.Add("No discount applied, order count is only 1");
-            }
+            var cartCategories = new Dictionary<IEnumerable<string>, decimal>();
 
-            var cartCategories = new List<Category>();
             foreach (var order in cart.ItemOrders)
             {
                 if (order.PurchaseQuantity > 1)
                 {
-                    SetDiscount(order);
+                    SetDiscountByQuantity(order);
 
                     DebugMessages.Add("Discount applied on: " + order.ID + ", due to quantity > 1");
+                    cartCategories.Add(order.ProductItem.CategoryObjects.Select(x => x.Name), 0);
                 }
-
-                if (order.ProductItem.CategoryObjects != null)
+                else
                 {
-                    cartCategories.Concat(order.ProductItem.CategoryObjects);
-
-                    var dupeCategories = cartCategories.GroupBy(x => x.Name)
-                                              .Where(x => x.Count() > 1)
-                                              .Select(x => x.Key)
-                                              .ToList();
-
-                    if (dupeCategories.Any())
-                    {
-                        foreach (var categoryName in dupeCategories)
-                        {
-                            if (order.ProductItem.CategoryObjects.Any(x => x.Name == categoryName))
-                            {
-                                SetDiscount(order);
-                            }
-                        }
-                    }
+                    cartCategories.Add(order.ProductItem.CategoryObjects.Select(x => x.Name), order.ProductItem.Price);
                 }
             }
+            SetDiscountByCategory(cart, cartCategories);
 
-            SetCartTotalPrice(cart);
             return true;
         }
 
         private static bool IsCartValid(ShoppingCart cart)
         {
-            foreach (var order in cart.ItemOrders)
+            if (cart.ItemOrders.Count <= 0)
             {
-                if (order.PurchaseQuantity > order.ProductItem.Quantity)
+                DebugMessages.Add("No order count is empty");
+                return false;
+            }
+            else
+            {
+                foreach (var order in cart.ItemOrders)
                 {
-                    DebugMessages.Add(string.Format
-                        ("Error, PurchaseQuantity is larger than StockQuantity of Item: {0}", order.ProductItem.Name));
-                    return false;
+                    if (order.PurchaseQuantity > order.ProductItem.Quantity)
+                    {
+                        DebugMessages.Add(string.Format
+                            ("Error, PurchaseQuantity is larger than StockQuantity of Item: {0}", order.ProductItem.Name));
+                        return false;
+                    }
                 }
             }
 
@@ -108,9 +90,28 @@ namespace ComputerStore.Common
             }
         }
 
-        private static void SetDiscount(ItemOrder order)
+        private static void SetDiscountByQuantity(ItemOrder itemOrder)
         {
-            order.TotalPrice = order.ProductItem.Price * (order.PurchaseQuantity - GlobalConstants.DEFAULT_DISCOUNT);
+            itemOrder.TotalPrice = itemOrder.ProductItem.Price * (itemOrder.PurchaseQuantity - GlobalConstants.DEFAULT_DISCOUNT);
+        }
+
+        private static void SetDiscountByCategory(ShoppingCart cart, Dictionary<IEnumerable<string>, decimal> cartCategories)
+        {
+            SetCartTotalPrice(cart);
+            Dictionary<string, decimal> categories = new Dictionary<string, decimal>();
+            foreach (var distionaryEntry in cartCategories)
+            {
+                foreach (string categoryName in distionaryEntry.Key)
+                {
+                    categories.Add(categoryName, distionaryEntry.Value);
+                }
+            }
+
+            var dupeCategories = categories.GroupBy(x => x.Key);
+
+            var sum = dupeCategories.Sum(x => x.Key);
+
+            cart.TotalPrice -= sum * GlobalConstants.DEFAULT_DISCOUNT;
         }
     }
 }
