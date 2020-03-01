@@ -19,7 +19,7 @@ namespace ComputerStore.Common
         // Used primarily for Unit Tests and Debugging
         public static IList<string> DebugMessages { get; set; } = new List<string>();
 
-        public static void SetTotalPriceWithDiscount(ShoppingCart cart)
+        public static bool SetTotalPriceWithDiscount(ShoppingCart cart)
         {
             DebugMessages.Clear();
 
@@ -28,8 +28,10 @@ namespace ComputerStore.Common
                 DebugMessages.Add("Cart is not valid");
                 cart.IsValid = false;
 
-                return;
+                return false;
             }
+
+            cart.IsValid = true;
 
             if (cart.ItemOrders.Count <= 0)
             {
@@ -74,6 +76,7 @@ namespace ComputerStore.Common
             }
 
             SetCartTotalPrice(cart);
+            return true;
         }
 
         private static bool IsCartValid(ShoppingCart cart)

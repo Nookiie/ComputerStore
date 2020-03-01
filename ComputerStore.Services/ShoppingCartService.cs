@@ -33,10 +33,23 @@ namespace ComputerStore.Services
 
             await SetShoppingCart(cart);
 
-            ShoppingCartUtils.SetTotalPriceWithDiscount(cart);
-            await Update(cart);
+            if (ShoppingCartUtils.SetTotalPriceWithDiscount(cart))
+            {
+                await Update(cart);
 
-            return ShoppingCartUtils.DebugMessages.Any() 
+                // Updating every productItem's StockQuantity after submitting the cart
+                foreach (var itemOrder in cart.ItemOrders)
+                {
+                    itemOrder.ProductItem.Quantity -= itemOrder.PurchaseQuantity;
+                    await productItemService.Update(itemOrder.ProductItem);
+                }
+            }
+            else
+            {
+                return "Cart is not valid";
+            }
+
+            return ShoppingCartUtils.DebugMessages.Any()
                 ? string.Join("\n", ShoppingCartUtils.DebugMessages)
                 : "No discounts applied \nCart's TotalValue updated";
         }

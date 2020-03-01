@@ -32,7 +32,7 @@ namespace ComputerStore.WebAPI.Controllers
             }
         }
 
-        [HttpPost("[action]")]
+        [HttpPost("[action]/{id}")]
         public async Task<string> SubmitByID(int id)
         {
             try
