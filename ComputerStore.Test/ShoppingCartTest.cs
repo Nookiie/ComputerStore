@@ -73,7 +73,7 @@ namespace ComputerStore.Test
 
             Assert.Equal((decimal) 301.92, cart.TotalPrice);
         }
-
+     
         [Fact]
         public void ApplyDiscountWhenCartHasTwoItemsDiscountFalseTest()
         {

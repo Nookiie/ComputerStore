@@ -43,7 +43,7 @@ namespace ComputerStore.Common
                 return false;
             }
 
-            var cartCategories = new List<KeyValuePair<IEnumerable<string>, decimal>>();
+            var cartCategories = new List<KeyValuePair<string, decimal>>();
 
             foreach (var order in cart.ItemOrders)
             {
@@ -52,11 +52,17 @@ namespace ComputerStore.Common
                     SetDiscountByQuantity(order);
 
                     DebugMessages.Add("Discount applied on: " + order.ID + ", due to quantity > 1");
-                    cartCategories.Add(new KeyValuePair<IEnumerable<string> , decimal>(order.ProductItem.CategoryObjects.Select(x => x.Name), 0));
+                    var items = order.ProductItem.CategoryObjects
+                        .Select(x => new KeyValuePair<string, decimal>(x.Name, 0))
+                        .ToList();
+                    cartCategories.AddRange(items);
                 }
                 else
                 {
-                    cartCategories.Add(new KeyValuePair<IEnumerable<string>, decimal>(order.ProductItem.CategoryObjects.Select(x => x.Name), order.ProductItem.Price));
+                    var items = order.ProductItem.CategoryObjects
+                        .Select(x => new KeyValuePair<string, decimal>(x.Name, order.ProductItem.Price))
+                        .ToList();
+                    cartCategories.AddRange(items);
                 }
             }
 
@@ -102,18 +108,8 @@ namespace ComputerStore.Common
             itemOrder.TotalPrice = itemOrder.ProductItem.Price * (itemOrder.PurchaseQuantity - GlobalConstants.DEFAULT_DISCOUNT);
         }
 
-        private static void SetDiscountByCategory(ShoppingCart cart, List<KeyValuePair<IEnumerable<string>, decimal>> cartCategories)
+        private static void SetDiscountByCategory(ShoppingCart cart, IList<KeyValuePair<string, decimal>> categories)
         {
-            IList<KeyValuePair<string, decimal>> categories = new List<KeyValuePair<string, decimal>>();
-
-            foreach (var distionaryEntry in cartCategories)
-            {
-                foreach (string categoryName in distionaryEntry.Key)
-                {
-                    categories.Add(new KeyValuePair<string, decimal>(categoryName, distionaryEntry.Value));
-                }
-            }
-
             var dupeCategories = categories
                 .GroupBy(x => x.Key)
                 .Select(x => new
