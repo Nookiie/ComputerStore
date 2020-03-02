@@ -43,7 +43,7 @@ namespace ComputerStore.Common
                 return false;
             }
 
-            var cartCategories = new Dictionary<IEnumerable<string>, decimal>();
+            var cartCategories = new List<KeyValuePair<IEnumerable<string>, decimal>>();
 
             foreach (var order in cart.ItemOrders)
             {
@@ -52,11 +52,11 @@ namespace ComputerStore.Common
                     SetDiscountByQuantity(order);
 
                     DebugMessages.Add("Discount applied on: " + order.ID + ", due to quantity > 1");
-                    cartCategories.Add(order.ProductItem.CategoryObjects.Select(x => x.Name), 0);
+                    cartCategories.Add(new KeyValuePair<IEnumerable<string> , decimal>(order.ProductItem.CategoryObjects.Select(x => x.Name), 0));
                 }
                 else
                 {
-                    cartCategories.Add(order.ProductItem.CategoryObjects.Select(x => x.Name), order.ProductItem.Price);
+                    cartCategories.Add(new KeyValuePair<IEnumerable<string>, decimal>(order.ProductItem.CategoryObjects.Select(x => x.Name), order.ProductItem.Price));
                 }
             }
 
@@ -102,7 +102,7 @@ namespace ComputerStore.Common
             itemOrder.TotalPrice = itemOrder.ProductItem.Price * (itemOrder.PurchaseQuantity - GlobalConstants.DEFAULT_DISCOUNT);
         }
 
-        private static void SetDiscountByCategory(ShoppingCart cart, Dictionary<IEnumerable<string>, decimal> cartCategories)
+        private static void SetDiscountByCategory(ShoppingCart cart, List<KeyValuePair<IEnumerable<string>, decimal>> cartCategories)
         {
             IList<KeyValuePair<string, decimal>> categories = new List<KeyValuePair<string, decimal>>();
 
